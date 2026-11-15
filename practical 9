@@ -1,0 +1,31 @@
+class EmployeeRecord {
+    String name;
+    double salary;
+    static int employeeCount = 0; // Static field
+
+    public EmployeeRecord() {
+        this("Unknown", 0.0); // Calls the parameterized constructor
+    }
+
+    public EmployeeRecord(String name, double salary) {
+        this.name = name;     // 'this' distinguishes instance field from parameter
+        this.salary = salary;
+        employeeCount++;      // Increment static count on creation
+    }
+
+    public static void displayCount() {
+        System.out.println("Total Employees Created: " + employeeCount);
+    }
+}
+
+public class Practical9 {
+    public static void main(String[] args) {
+        EmployeeRecord.displayCount();
+
+        EmployeeRecord e1 = new EmployeeRecord();
+        EmployeeRecord e2 = new EmployeeRecord("Alice", 75000);
+        EmployeeRecord e3 = new EmployeeRecord("Bob", 82000);
+
+        EmployeeRecord.displayCount();
+    }
+}
