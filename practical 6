@@ -1,0 +1,44 @@
+class Book {
+    String title, author;
+    double price;
+    
+    public Book() {
+        this.title = "Unknown";
+        this.author = "Unknown";
+        this.price = 0.0;
+    }
+
+    public Book(String title, String author, double price) {
+        this.title = title;
+        this.author = author;
+        this.price = price;
+    }
+
+    public Book(Book other) {
+        this.title = other.title;
+        this.author = other.author;
+        this.price = other.price;
+    }
+
+    public void display() {
+        System.out.println("Title: " + title + " | Author: " + author + " | Price: $" + price);
+    }
+}
+
+public class Practical6 {
+    public static void main(String[] args) {
+        Book b1 = new Book();
+        Book b2 = new Book("Core Java", "Horstmann", 45.99);
+        Book b3 = new Book(b2); // Using copy constructor
+
+        System.out.println("Before Modification:");
+        b2.display();
+        b3.display();
+
+        b3.price = 50.00; // Modifying the copied object
+
+        System.out.println("\nAfter Modifying Copy:");
+        b2.display(); // Original remains unchanged
+        b3.display();
+    }
+}
