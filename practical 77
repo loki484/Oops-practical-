@@ -1,0 +1,28 @@
+class GcTestObject {
+    String name;
+
+    public GcTestObject(String name) {
+        this.name = name;
+        System.out.println("Object created: " + name);
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Garbage collector is removing object: " + name);
+        super.finalize();
+    }
+}
+
+public class Practical7 {
+    public static void main(String[] args) {
+        GcTestObject obj = new GcTestObject("TempData");
+        obj = null; // Remove reachable reference
+
+        System.out.println("Reference set to null. Requesting GC...");
+        System.gc(); // Requesting garbage collection (no guarantee of immediate execution)
+        
+        // Brief pause to allow GC thread to run for demonstration purposes
+        try { Thread.sleep(1000); } catch (Exception e) {}
+        System.out.println("End of main method.");
+    }
+}
