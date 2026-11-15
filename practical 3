@@ -1,0 +1,36 @@
+
+interface Printable {
+    void print();
+}
+interface Scannable {
+    void scan();
+}
+
+
+class AllInOnePrinter implements Printable, Scannable {
+    public void print() { System.out.println("Printing document..."); }
+    public void scan() { System.out.println("Scanning document..."); }
+}
+
+
+class Machine {
+    void powerOn() { System.out.println("Machine powered on."); }
+}
+class SmartPrinter extends Machine implements Printable, Scannable {
+    public void print() { System.out.println("SmartPrinter printing..."); }
+    public void scan() { System.out.println("SmartPrinter scanning..."); }
+}
+
+public class Practical3 {
+    public static void main(String[] args) {
+        AllInOnePrinter aio = new AllInOnePrinter();
+        aio.print();
+        aio.scan();
+
+        System.out.println("--- Hybrid Structure ---");
+        SmartPrinter sp = new SmartPrinter();
+        sp.powerOn(); // From Base Class
+        sp.print();   // From Interface
+        sp.scan();    // From Interface
+    }
+}
