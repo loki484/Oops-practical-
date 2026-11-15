@@ -1,0 +1,29 @@
+class ComplexNumber {
+    double real, imaginary;
+
+    public ComplexNumber(double real, double imaginary) {
+        this.real = real;
+        this.imaginary = imaginary;
+    }
+
+    public ComplexNumber add(ComplexNumber other) {
+        return new ComplexNumber(this.real + other.real, this.imaginary + other.imaginary);
+    }
+
+    public void display() {
+        System.out.println(real + " + " + imaginary + "i");
+    }
+}
+
+public class Practical5 {
+    public static void main(String[] args) {
+        ComplexNumber c1 = new ComplexNumber(3.5, 2.0);
+        ComplexNumber c2 = new ComplexNumber(1.5, 4.5);
+        
+        ComplexNumber result = c1.add(c2);
+
+        System.out.print("Input 1: "); c1.display();
+        System.out.print("Input 2: "); c2.display();
+        System.out.print("Result:  "); result.display();
+    }
+}
