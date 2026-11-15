@@ -1,0 +1,52 @@
+// --- Single Inheritance ---
+class Vehicle {
+    void start() { System.out.println("Vehicle is starting."); }
+}
+class Car extends Vehicle {
+    void drive() { System.out.println("Car is driving."); }
+}
+
+// --- Multilevel Inheritance ---
+class Person {
+    void breathe() { System.out.println("Person is breathing."); }
+}
+class Employee extends Person {
+    void work() { System.out.println("Employee is working."); }
+}
+class Manager extends Employee {
+    void manage() { System.out.println("Manager is managing."); }
+}
+
+// --- Hierarchical Inheritance ---
+class Shape {
+    void draw() { System.out.println("Drawing a shape."); }
+}
+class Circle extends Shape {
+    void drawCircle() { System.out.println("Drawing a circle."); }
+}
+class Rectangle extends Shape {
+    void drawRectangle() { System.out.println("Drawing a rectangle."); }
+}
+
+public class Practical2 {
+    public static void main(String[] args) {
+        System.out.println("--- Single Inheritance ---");
+        Car myCar = new Car();
+        myCar.start(); // Inherited from Vehicle
+        myCar.drive();
+
+        System.out.println("\n--- Multilevel Inheritance ---");
+        Manager mgr = new Manager();
+        mgr.breathe(); // Inherited from Person
+        mgr.work();    // Inherited from Employee
+        mgr.manage();
+
+        System.out.println("\n--- Hierarchical Inheritance ---");
+        Circle c = new Circle();
+        Rectangle r = new Rectangle();
+        c.draw(); // Inherited from Shape
+        c.drawCircle();
+        r.draw(); // Inherited from Shape
+        r.drawRectangle();
+    }
+}
