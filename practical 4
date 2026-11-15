@@ -1,0 +1,34 @@
+
+class Calculator {
+    int add(int a, int b) { return a + b; }
+    double add(double a, double b) { return a + b; }
+    int add(int a, int b, int c) { return a + b + c; }
+}
+
+class Payroll {
+    void calculatePay() { System.out.println("Calculating generic base pay."); }
+}
+class FullTimeEmployee extends Payroll {
+    @Override
+    void calculatePay() { System.out.println("Calculating pay: Base + Bonus."); }
+}
+class Contractor extends Payroll {
+    @Override
+    void calculatePay() { System.out.println("Calculating pay: Hourly Rate * Hours."); }
+}
+
+public class Practical4 {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        System.out.println("Overloading 1: " + calc.add(5, 10));
+        System.out.println("Overloading 2: " + calc.add(5.5, 2.5));
+        System.out.println("Overloading 3: " + calc.add(1, 2, 3));
+
+        System.out.println("\n--- Overriding ---");
+        Payroll p1 = new FullTimeEmployee(); // Base-class reference
+        Payroll p2 = new Contractor();       // Base-class reference
+        
+        p1.calculatePay(); 
+        p2.calculatePay(); 
+    }
+}
